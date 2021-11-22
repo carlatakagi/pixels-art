@@ -7,3 +7,13 @@ ul li {
   background-color: rgb(218, 141, 141);
 }
 
+#pixel-board {
+  height: 500px;
+  width: 80%;
+  border: 1px solid black;
+}
+
+.pixel {
+  background-color: white;
+  display: inline-block;
+}

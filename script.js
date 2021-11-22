@@ -1,4 +1,4 @@
-// mudar cor de cada square
+// mudar cor do primeiro square
 const square1 = document.getElementsByClassName('color')[0];
 square1.style.backgroundColor = 'black';
 
@@ -17,3 +17,22 @@ square3.style.backgroundColor = randomColor();
 
 const square4 = document.getElementsByClassName('color')[3];
 square4.style.backgroundColor = randomColor();
+
+// selecionar cor
+const selectColor = document.getElementsById('color-palette');
+
+// botão limpar cores - requisito 9
+function clearButton() {
+  const button = document.querySelector('#clear-board');
+  let backgroundSquare = randomColorSquare();
+  const newBackgroundColor = 'white';
+
+  button.addEventListener('click', () => {
+    for (let index = 0; index < button.length; index += 1) {
+      if (button[index].style.backgroundSquare !== newBackgroundColor) {
+        backgroundSquare = newBackgroundColor;
+      }
+    }
+  });
+}
+clearButton();
