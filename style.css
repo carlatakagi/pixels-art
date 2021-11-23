@@ -8,12 +8,31 @@ ul li {
 }
 
 #pixel-board {
-  height: 500px;
-  width: 80%;
-  border: 1px solid black;
+  height: auto;
+  width: auto;
+  background-color: white;
+  padding: 0;
+  margin: 0;
+}
+
+/* consultei display table no link abaixo
+Link https://www.maujor.com/tutorial/anti-heroi-css-display-table.php */
+
+.teste {
+  padding: 0;
+  margin: 0;
+  line-height: 0;
+  padding-right: 0;
+  display: table;
 }
 
 .pixel {
   background-color: white;
   display: inline-block;
+  border: 0.5px solid black;
+  height: 25px;
+  width: 25px;
+  margin: 0;
+  padding: 0;
+  padding-right: 0;
 }
