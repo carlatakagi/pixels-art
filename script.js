@@ -1,5 +1,5 @@
 // mudar cor do primeiro square
-const square1 = document.getElementsByClassName('color-selected')[0];
+const square1 = document.getElementsByClassName('color selected')[0];
 square1.style.backgroundColor = 'black';
 
 // mudar cor aleatória
