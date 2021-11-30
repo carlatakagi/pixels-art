@@ -8,22 +8,25 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
+    <header class="header">
       <h1 id="title">Paleta de Cores</h1>
     </header>
 
     <!--4 divs cada uma com uma classe color-->
     <!--teste nao estava aceitando a div com id color-palette-->
     <!--daí agora o teste não aceita mais nenhum requisito kkkkkrying-->
-    <main>
-      <section> 
+    <main class="main">
+      <section id="palette-container"> 
         <ul id="color-palette">
         </ul>
       </section>
       
-      <section>
+      <section class="button">
         <input id="board-size" type="number" placeholder="Digite o número de pixels">
         <button id="generate-board" type="button">VQV</button>
+      </section>
+      
+      <section class="button-clear">
         <button id="clear-board" type="button">Limpar</button>
       </section>
 
@@ -32,7 +35,6 @@
       </section>
 
     </main>
-
     <script src="script.js"></script>
   </body>
 </html>
