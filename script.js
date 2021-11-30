@@ -33,21 +33,12 @@ drawPixelBoard();
 
 // função selecionar cor
 function selectColor(square) { // precisa do elemento para saber quem está selecionando, no caso é o quadrado
-  // adicionar e remover class
   const allSquareColors = colorPalette.children;
-  // se algum elemento da li tiver a classe selected, remove ao clicar em outro
-  // se os filhos do color-palette classList.contains('selected'), entao remove classe
-  // selecionar somente um de cada vez - está selecionando todos
+
   for (let i = 0; i < allSquareColors.length; i += 1) {
     allSquareColors[i].classList.remove('selected');
   }
   square.classList.add('selected');
-  // for e event target
-  // if (square.classList.contains('selected')) {
-  //   square.classList.remove('selected');
-  // } else {
-  //   square.classList.add('selected');
-  // }
 }
 
 // mudar cor aleatória
@@ -86,8 +77,6 @@ function clearButton() {
   for (let i = 0; i < pixel.length; i += 1) {
     pixel[i].style.backgroundColor = whiteBackgroundColor;
   }
-  // erro: verifica se ao clicar no botão, o quadro de pixels é totalmente preenchido de branco
-  pixelBoard.style.backgroundColor = whiteBackgroundColor;
 }
 
 buttonClear.addEventListener('click', clearButton);
