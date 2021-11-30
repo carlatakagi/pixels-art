@@ -1,5 +1,7 @@
 // requisitos obrigatorios
-// funcao pintar pixels
+// funcao pintar pixels com a cor selecionada
+const colorPalette = document.querySelector('#color-palette');
+
 function paintPixel(cell) {
   const colorSelected = document.querySelector('.selected');
 
@@ -29,22 +31,23 @@ function drawPixelBoard() {
 
 drawPixelBoard();
 
-// selecionar cor
-// acessa a paleta de cores
-// pega uma das quatro cores dos quadrados
-// ao clicar nos quadradinhos do pixel board
-// a cor selecionada irá pintar o que estiver diferente dela
-function selectColor(square) { // precisa de elemento para saber quem está selecionando
+// função selecionar cor
+function selectColor(square) { // precisa do elemento para saber quem está selecionando, no caso é o quadrado
   // adicionar e remover class
-  // colocar if dentro de um for
+  const allSquareColors = colorPalette.children;
   // se algum elemento da li tiver a classe selected, remove ao clicar em outro
   // se os filhos do color-palette classList.contains('selected'), entao remove classe
   // selecionar somente um de cada vez - está selecionando todos
-  if (square.classList.contains('selected')) {
-    square.classList.remove('selected');
-  } else {
-    square.classList.add('selected');
+  for (let i = 0; i < allSquareColors.length; i += 1) {
+    allSquareColors[i].classList.remove('selected');
   }
+  square.classList.add('selected');
+  // for e event target
+  // if (square.classList.contains('selected')) {
+  //   square.classList.remove('selected');
+  // } else {
+  //   square.classList.add('selected');
+  // }
 }
 
 // mudar cor aleatória
@@ -52,11 +55,10 @@ function selectColor(square) { // precisa de elemento para saber quem está sele
 // Link: https://dev.to/akhil_001/generating-random-color-with-single-line-of-js-code-fhj
 function randomColor() {
   const randomColorSquare = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-  return randomColorSquare; // retornar cor aleatoria
+  return randomColorSquare; // retornar cor aleatoria - as vezes retorna a cor
 }
 
 // função para criar os quadradinhos de cor e adicionar evento de selecionar cor
-const colorPalette = document.querySelector('#color-palette');
 function createSquareColorPalette() {
   for (let i = 0; i < 4; i += 1) {
     const square = document.createElement('li');
@@ -70,7 +72,7 @@ function createSquareColorPalette() {
     }
 
     colorPalette.appendChild(square);
-    square.addEventListener('click', () => selectColor(square));
+    square.addEventListener('click', () => selectColor(square)); // () => funcao: criar função pai para poder passar argumento para uma função sem chama-la
   }
 }
 createSquareColorPalette();
@@ -84,9 +86,8 @@ function clearButton() {
   for (let i = 0; i < pixel.length; i += 1) {
     pixel[i].style.backgroundColor = whiteBackgroundColor;
   }
-  // Verifica se ao clicar no botão, o quadro de pixels é totalmente preenchido de branco
-  // pintar todos os background color dos pixels ou do board
-  colorPalette.style.backgroundColor = whiteBackgroundColor;
+  // erro: verifica se ao clicar no botão, o quadro de pixels é totalmente preenchido de branco
+  pixelBoard.style.backgroundColor = whiteBackgroundColor;
 }
 
 buttonClear.addEventListener('click', clearButton);
