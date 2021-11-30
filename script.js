@@ -8,9 +8,8 @@ function paintPixel(cell) {
 }
 
 // funcao criar o board com pixels
+const pixelBoard = document.getElementById('pixel-board');
 function drawPixelBoard() {
-  const pixelBoard = document.getElementById('pixel-board');
-
   for (let i = 0; i < 5; i += 1) {
     const line = document.createElement('div');
     line.classList.add('linha');
@@ -38,6 +37,8 @@ drawPixelBoard();
 function selectColor(square) { // precisa de elemento para saber quem está selecionando
   // adicionar e remover class
   // colocar if dentro de um for
+  // se algum elemento da li tiver a classe selected, remove ao clicar em outro
+  // se os filhos do color-palette classList.contains('selected'), entao remove classe
   // selecionar somente um de cada vez - está selecionando todos
   if (square.classList.contains('selected')) {
     square.classList.remove('selected');
@@ -55,7 +56,7 @@ function randomColor() {
 }
 
 // função para criar os quadradinhos de cor e adicionar evento de selecionar cor
-const colorPalette = document.getElementById('color-palette');
+const colorPalette = document.querySelector('#color-palette');
 function createSquareColorPalette() {
   for (let i = 0; i < 4; i += 1) {
     const square = document.createElement('li');
@@ -77,15 +78,15 @@ createSquareColorPalette();
 // botão limpar cores
 const buttonClear = document.querySelector('#clear-board');
 function clearButton() {
-  let backgroundSquare = colorPalette.style.backgroundColor;
+  const pixel = document.querySelectorAll('.pixel');
   const whiteBackgroundColor = 'white';
-  // se apertar o botao o que é colorido vira branco
-  // se a cor do square for !== branco entao fica branco
-  // se nao nao faz nada
-  for (let i = 0; i < buttonClear.length; i += 1) {
-    buttonClear[i].style.backgroundColor = backgroundSquare;
+
+  for (let i = 0; i < pixel.length; i += 1) {
+    pixel[i].style.backgroundColor = whiteBackgroundColor;
   }
-  backgroundSquare = whiteBackgroundColor;
+  // Verifica se ao clicar no botão, o quadro de pixels é totalmente preenchido de branco
+  // pintar todos os background color dos pixels ou do board
+  colorPalette.style.backgroundColor = whiteBackgroundColor;
 }
 
 buttonClear.addEventListener('click', clearButton);
